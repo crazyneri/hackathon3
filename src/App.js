@@ -2,6 +2,8 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { DateTime } from "luxon";
 import Flights from "./Flights";
+import Destination from "./Components/Destination";
+import Origin from "./Components/Origin";
 
 function App() {
   const [flights, setFlights] = useState([]);
@@ -20,8 +22,28 @@ function App() {
   }, []);
 
   console.log(flights);
+
+  // select destination
+  const [filteredDestination, setFilteredDestination] = useState("");
+  const destinationFilterHandler = (destinationCountry) => {
+    console.log("App.js - destination");
+    setFilteredDestination(destinationCountry);
+  };
+
+  // select origin
+  const [filteredOrigin, setFilteredOrigin] = useState("");
+  const originFilterHandler = (originCountry) => {
+    console.log("App.js - origin");
+    setFilteredOrigin(originCountry);
+  };
+
   return (
     <div className="App">
+      <Destination
+        selected={filteredDestination}
+        onSelectDestination={destinationFilterHandler}
+      />
+      <Origin value={filteredOrigin} onSelectOrigin={originFilterHandler} />
       <Flights flights={flights} />
     </div>
   );
