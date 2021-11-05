@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 function Flights(props) {
   return (
     <div>
@@ -10,9 +12,9 @@ function Flights(props) {
 
           <p>
             Time of departure:
-            {/* {DateTime.fromMillis(flight.duration.departure * 1000).toFormat(
-                "hh:mm"
-              )} */}
+            {DateTime.fromMillis(flight.duration.departure * 1000).toFormat(
+              "hh:mm"
+            )}
           </p>
 
           <p>Price: {flight.conversion.EUR} EUR</p>
